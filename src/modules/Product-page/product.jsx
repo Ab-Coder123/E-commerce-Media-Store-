@@ -20,7 +20,7 @@ const Product = () => {
       {
 
               products.length > 0 ?
-              <Products products={products} /> :
+              <Products products ={products} /> :
               <div className='loads'>
                 <svg
               className="cartproduct"

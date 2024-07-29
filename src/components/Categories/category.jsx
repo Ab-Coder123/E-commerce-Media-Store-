@@ -18,6 +18,7 @@ const Category = () => {
   return (
     <>
       <Filterproducts filterproducts={categories} />
+      {/*بتاعه ال الكاتيجوري  Api  هنا هو بقا غمل فانكشم اسمها كاتيجوري فيها ال  */}
     </>
   );
 };

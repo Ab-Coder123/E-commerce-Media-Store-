@@ -18,16 +18,42 @@ function Home() {
     fetchproducts()
   },[]) 
 
+// *************
 
-    
+     //  dark mode
+
+  const [darkblack, setDarkMode] = useState("light");
+
+  useEffect(() => {
+    if (darkblack === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [darkblack]);
+
+  const toggleDarkMode = () => {
+    setDarkMode(darkblack === "dark" ? "light" : "dark");
+  };
   return (
   <>
+            <button className=' fixed ml-5 mt-4'>
+              <label class="ui-switch">
+                <input type="checkbox" />
+                <div onClick={toggleDarkMode} class="slider">
+                  <div class="circle"></div>
+                </div>
+              </label>
+            </button>
+
           <Main/> 
           <Gallery/>
           <Category/>
             {
               products.length > 0 ?
+              // if
               <Products products={products} /> :
+              // else
               <div className='loads'>
                 <svg
               className="cartproduct"
@@ -84,6 +110,7 @@ function Home() {
           <State/>
           <Team/>
           <Massage/>
+
     </>
   )
 }

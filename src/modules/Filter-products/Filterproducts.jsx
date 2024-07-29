@@ -11,11 +11,12 @@ const Filterproducts = ({filterproducts=[1,2,3]}) => {
       <h2 className="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">ROOF PARTY POLAROID</h2>
       <h1 className="sm:text-3xl text-2xl font-medium title-font text-gray-900">Master Cleanse Reliac Heirloom</h1>
     </div>
-    <div className="flex flex-wrap -m-4">
+    <div className="flex flex-wrap justify-center ">
         {
           filterproducts.map( (filterproduct) => {
               return(
                 <Link to={`/modules/Categoryproduct/${filterproduct}`} className="p-4 md:w-1/3">
+                  {/* دا ال لينك ال هيوديك ل صفحه بتاعته ال كاتيجوري لكن من خلال ال فيلتر  */}
                 <div className="flex rounded-lg h-full bg-gray-100 p-8 flex-col">
                   <div className="flex items-center mb-3">
                     <div className="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-indigo-500 text-white flex-shrink-0">

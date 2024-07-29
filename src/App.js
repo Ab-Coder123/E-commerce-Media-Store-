@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 // modules
 import Home from "./modules/Home/Home";
 import Product from "./modules/Product/Product";
 import Productpage from "./modules/Product-page/product";
-
-
-// main sections 
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
 import CategoryProduct from "./modules/Categoryproduct/categoryproduct";
 import Cart from "./modules/Cart/Cart";
-// code
+import Login from "./modules/Login/Login";
+import SignUp from "./modules/SignUp/SignUp";
+
+// main sections
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import { AuthProvider } from "./Firebase/Context/Contextindex";
+
 function App() {
   const [load, setload] = useState(false);
 
@@ -37,12 +40,7 @@ function App() {
               height="128px"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <g
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="8"
-              >
+              <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8">
                 <g className="cart__track" stroke="hsla(0,10%,10%,0.1)">
                   <polyline points="4,4 21,4 26,22 124,22 112,64 35,64 39,80 106,80" />
                   <circle cx="43" cy="111" r="13" />
@@ -83,15 +81,17 @@ function App() {
       ) : (
         <>
           <Header />
-
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/Products/:id" element={<Product />} />
-            <Route path="/modules/Categoryproduct/:name" element={<CategoryProduct/>} />
-            <Route path="/modules/Cart/Cart" element={<Cart/>}/>
-            <Route path="/modules/Product-page/product" element={<Productpage />} />
-
-          </Routes>
+          <AuthProvider>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/Products/:id" element={<Product />} />
+              <Route path="/modules/Categoryproduct/:name" element={<CategoryProduct />} />
+              <Route path="/modules/Cart/Cart" element={<Cart />} />
+              <Route path="/modules/Product-page/product" element={<Productpage />} />
+              <Route path="/modules/Login/Login" element={<Login />} />
+              <Route path="/modules/SignUp/SignUp" element={<SignUp />} />
+            </Routes>
+          </AuthProvider>
           <Footer />
         </>
       )}
